@@ -8,7 +8,7 @@ export default function LoginPage_uncorrect() {
             <div className="w-full h-[calc(100vh-6rem)] bg-white rounded-4xl ml-12 mr-12 flex flex-col items-center justify-top box-border">
                 <div className="h-18 w-42 bg-[url('/assets/images/airplane.png')] bg-cover bg-top mb-8 mt-12 flex"></div>
                 <div className='flex text-3xl text-center mb-30'>
-                    <div className='font-medium'>Stamp Marble</div>
+                    <div className='font-semibold'>Stamp Marble</div>
                     <div className='font-light'>에 오신 것을 환영합니다!</div>
                 </div>
                 <form action="" className='flex flex-col items-center mb-8'>

@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "S-coreDream";
+  font-weight: lighter;
+  src: url("/assets/fonts/SCDream6.otf") format("truetype");
+}
+
 body {
     background: #4192FF;
-    font-family: 'S-score Dream';
     color: #4192FF;
 }
