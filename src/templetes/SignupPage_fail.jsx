@@ -2,7 +2,7 @@ import React, { use } from 'react';
 import { useEffect, useState } from 'react';
 import '../App.css'
 
-export default function SignupPage() {
+export default function SignupPage_fail() {
 
     const [clicked, setClicked] = useState(false);
     const [clicked2, setClicked2] = useState(false);
@@ -43,15 +43,17 @@ export default function SignupPage() {
                         bg-position-[right_1rem_center] pr-10" />
                         <input type="password" placeholder='password' className="border w-80 h-10 p-5 rounded-full box-border bg-[url('/assets/images/prime_lock.png')] bg-no-repeat bg-size-[1.2rem_1.2rem] 
                         bg-position-[right_1rem_center] pr-10 mb-4" />
-                        <input type="password" placeholder='re-enter-password' className="border w-80 h-10 p-5 mb-4 rounded-full box-border bg-[url('/assets/images/prime_lock.png')] bg-no-repeat bg-size-[1.2rem_1.2rem] 
+                        <input type="password" placeholder='re-enter-password' className="border border-red-500 w-80 h-10 p-5 mb-2 text-red-500 rounded-full box-border bg-[url('/assets/images/prime_lock_red.png')] bg-no-repeat bg-size-[1.2rem_1.2rem] 
                         bg-position-[right_1rem_center] pr-10" />
+                        <div className='w-80 flex justify-end '>
+                            <div className='mb-5 text-red-500 text-xs/normal font-normal'>* 비밀번호가 같지 않습니다.</div>
+                        </div>
                         <div className='flex mb-4'>
                             <div className={`w-38 h-12 items-center flex justify-center rounded-full border mr-3 font-semibold
                             ${clicked ? 'bg-blue-400 text-white' : 'bg-white text-blue-400'}`} onClick={onClick}>giver</div>
                             <div className={`w-38 h-12 items-center flex justify-center rounded-full border font-semibold
                             ${clicked2 ? 'bg-blue-400 text-white' : 'bg-white text-blue-400'}`} onClick={onClick2}>receiver</div>
                         </div>
-                        <button type='submit' className='w-80 h-10 p-5 text-1.5xl rounded-full bg-blue-500 text-white flex items-center justify-center shadow-blue-500 shadow-xl/15 font'>create an account</button>
                     </form>
                 </div>
             </div>
