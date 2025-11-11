@@ -8,12 +8,21 @@ export default function SignupPage() {
     const [clicked2, setClicked2] = useState(false);
 
     const onClick = () => {
-        setClicked(!clicked);
-        setClicked2(clicked);
+        if (clicked) {
+            setClicked(!clicked);
+        } else {
+            setClicked(!clicked);
+            setClicked2(clicked);
+        }
     }
     const onClick2 = () => {
-        setClicked2(!clicked2);
-        setClicked(clicked2);
+        if (clicked2) {
+            setClicked2(!clicked2);
+        }
+        else {
+            setClicked2(!clicked2);
+            setClicked(clicked2);
+        }
     }
 
     return (
