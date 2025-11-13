@@ -29,7 +29,7 @@ export default function MyPage() {
                                 <div className='text-white font-bold text-2xs'>2 개</div>
                         </div>
 
-                        <div className='w-180 h-60 bg-white border border-background pt-3 pb-3 pl-10 pr-20 rounded-r-md rounded-bl-md'>
+                        <div className='w-180 h-60 bg-white border border-background pt-3 pb-3 pl-10 pr-20 rounded-r-md rounded-bl-md overflow-y-scroll'>
                             <div className='text-center mb-5 font-semibold'>나의 여행사</div>
 
                             <AirplaneList apname={"OO여행사"} pnumber={"11명"} cdate={"25/11/01"} />
@@ -39,6 +39,24 @@ export default function MyPage() {
                             <AirplaneList apname={"BB여행사"} pnumber={"10명"} cdate={"25/11/02"} />
                             
                             <hr className='mb-2' />
+
+                            <AirplaneList apname={"OO여행사"} pnumber={"11명"} cdate={"25/11/01"} />
+
+                            <hr className='mb-2' />
+                            
+                            <AirplaneList apname={"BB여행사"} pnumber={"10명"} cdate={"25/11/02"} />
+                            
+                            <hr className='mb-2' />
+
+                            <AirplaneList apname={"OO여행사"} pnumber={"11명"} cdate={"25/11/01"} />
+
+                            <hr className='mb-2' />
+                            
+                            <AirplaneList apname={"BB여행사"} pnumber={"10명"} cdate={"25/11/02"} />
+                            
+                            <hr className='mb-2' />
+                            
+                            
 
                         </div>
                     </div>

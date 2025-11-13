@@ -9,7 +9,7 @@ import MyPage from './templetes/MyPage';
 export default function App() {
   return (
     <>
-      <MyPage />;
+      <MyPage />; 
     </>
   )
 }
