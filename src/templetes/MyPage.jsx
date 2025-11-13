@@ -2,6 +2,7 @@ import react from 'react';
 import { useState, useEffect } from 'react';
 import NavigatorBar from '../components/NavigatorBar';
 import AirplaneList from '../components/AirplaneList';
+import Profile from '../components/Propile';
 
 export default function MyPage() {
 
@@ -14,14 +15,7 @@ export default function MyPage() {
                 <div className='flex flex-col w-screen items-center'>
                     <a href='' className="w-6 h-9 bg-[url('/assets/images/back.png')] bg-cover mt-10 ml-25 self-start"></a>
                     <div className='flex w-screen justify-between items-start mb-5'>
-                        <div className='flex items-center'>
-                            <div className="bg-[url('/assets/images/mypageperson.png')] bg-cover w-40 h-40 mr-5 ml-50"></div>
-                            <div className='flex flex-col text-black'>
-                                <div className='font-bold text-2xl mb-2'>이현민</div>
-                                <div className='mb-1'>s2531@e-mirim.hs.kr</div>
-                                <div>만16세</div>
-                            </div>
-                        </div>
+                        <Profile name={"이현민"} email={"s2531@e-mirim.hs.kr"} age={"만16세"} />
 
                         <div className='text-white bg-background pt-1 pb-1 pl-2 pr-2 rounded-md cursor-pointer mr-55 mt-5 flex justify-center items-center'>
                             <div className='mr-2'>정보 수정하기</div>
