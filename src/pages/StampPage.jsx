@@ -28,7 +28,7 @@ function Stamp({ isFilled, agency, date }) {
     );
 }
 
-export default function StampBook() {
+export default function StampPage() {
     const [koreaStamps] = useState([
         { id: 1, isFilled: true, agency: 'OO여행사', date: '25/11/02' },
         { id: 2, isFilled: true, agency: 'OO여행사', date: '25/11/02' },

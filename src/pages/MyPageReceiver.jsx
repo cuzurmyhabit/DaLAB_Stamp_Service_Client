@@ -4,7 +4,7 @@ import NavigatorBar from '../components/NavigatorBar';
 import Profile from '../components/Propile';
 import CouponItem from '../components/CouponItem';
 
-export default function MyPageGiver() {
+export default function MyPageReceiver() {
 
     const [couponData, setCouponData] = useState([
         { id: 1, agency: "OO여행사", date: "25/11/15" },

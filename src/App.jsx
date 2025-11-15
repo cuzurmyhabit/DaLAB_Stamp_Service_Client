@@ -7,13 +7,15 @@ import LoginPage_fail from './pages/LoginPage_fail';
 import MyPageGiver from './pages/MyPageGiver';
 import MyPageReceiver from './pages/MyPageReceiver';
 import StampPage from './pages/StampPage';
+import PassportPage from './pages/PassportPage';
 
 export default function App() {
   return (
     <>
       {/* <MyPageGiver />;  */}
       {/* <MyPageReceiver />; */}
-      <StampPage />;
+      {/* <StampPage />; */}
+      <PassportPage />;
     </>
   )
 }
