@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Login } from "../lib/supabase";
+import { Login } from "../lib/auth";
 import '../App.css'
 
 export default function LoginPage() {
@@ -10,7 +10,7 @@ export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginFail, setLoginFail] = useState(false);
-``
+
     const handleLoginSubmit = async (e) => {
         e.preventDefault(); 
 
