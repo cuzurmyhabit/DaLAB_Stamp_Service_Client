@@ -130,12 +130,16 @@ export default function ReceiverHome(){
               <button>순위 설정</button>
             </div>
             <div className="border border-blue-400 ">
-              {userStamp.}
+              {userStamp.map((v)=>(
+                <div>
+                  
+                </div>
+              ))}
             </div>
           </div>    
           <div>
-            <button>여행사 추가하기</button>
-            <button>여행사 탈퇴하기</button>  
+            <button onClick={handleAddTravelAgencySubmit}>여행사 추가하기</button>
+            <button onClick={handleDeleteTravelAgencySubmit}>여행사 탈퇴하기</button>  
           </div>      
         </div>
       }
