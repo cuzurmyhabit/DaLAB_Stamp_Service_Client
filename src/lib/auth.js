@@ -26,12 +26,15 @@ export async function Signup(email, password, name, isUser) {
   if (error) return { user: null, error };
 
   const user = data?.user;
+  if (!user) {
+    return { user: null, error: { message: "회원가입에 성공했지만 사용자 데이터 없다." } };
+  }
 
   const { error: insertError } = await supabase.from("users").insert([{
-      id: user.id,
-      user_name: name,
-      email: email,
-      is_user: isUser,
+    id: user.id,
+    name: name,
+    email: email,
+    is_user: isUser,
     }]);
 
   if (insertError) return { user: null, error: insertError };
