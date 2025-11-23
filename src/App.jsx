@@ -17,26 +17,26 @@ export default function App() {
   const navigate = useNavigate();
   const [isLogined, setIsLogined] = useState(null);
 
-  useEffect(() => {
-    async function userVaild(){ 
-      const user = await getCurrentUser();
-      if(!user) {
-        navigate("/login");
-        setIsLogined(false)
-        return;
+  useEffect(async () => {
+    const user = await getCurrentUser();
+    if(!user) {
+      navigate("/login");
+      setIsLogined(false)
+      return;
+    }
+    setIsLogined(true)
+    if(window.location.pathname === "/"){
+      if(user.is_user){
+        navigate("/receiver")
       }
-      setIsLogined(true)
-      if(window.location.pathname === "/"){
-        if(user.is_user){
-          navigate("/receiver")
-        }
-        else{
-          navigate("/giver")
-        }
+      else{
+        navigate("/giver")
       }
     }
-    userVaild();
-  }, []);
+    else{
+      window.location.pathname = "/";
+    }
+  }, [navigate]);
 
   return (
     <>
