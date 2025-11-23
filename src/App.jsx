@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import './App.css'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+
 import LoginPage from './pages/LoginPage'
 import {getCurrentUser} from "./lib/auth"
 import SignupPage from './pages/SignupPage';
@@ -12,6 +13,7 @@ import ReceiverHome from './pages/RecevierHome';
 import NavigatorBar from './components/NavigatorBar';
 
 export default function App() {
+
   const navigate = useNavigate();
   const [isLogined, setIsLogined] = useState(null);
 
