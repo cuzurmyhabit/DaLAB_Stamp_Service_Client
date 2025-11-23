@@ -5,6 +5,7 @@ export const UserTravelAgencyContext = createContext(null);
 
 export function UserTravelAgencyProvider({children}){
   const { user } = useContext(AuthContext);
+  const [isAgencyExist, setIsAgencyExist] = useState(false);
   const [userTravelAgency, setUserTravelAgency] = useState([]);
   const [userTravelAgencyId, setUserTravelAgencyId] = useState([]);
   const [userTravelAgencyName, setUserTravelAgencyName] = useState([]);
@@ -20,10 +21,31 @@ export function UserTravelAgencyProvider({children}){
       setUserTravelAgencyId([])
       return;
     }
+    const agencies = userAgency ?? [];
+    if(agencies.length <= 0){
+      setIsAgencyExist(false);
+      setUserTravelAgencyId([]);
+      return;
+    }
+    setIsAgencyExist(true);
+    setUserTravelAgencyId(agencies);
+    // 오버해드 확인
+    const rtnUserTravelAgency = await userTravelAgencyId.map(async (v, i) => {
+      const {data, error} = await supabase.from("travel_agency").select("*").eq("travel_agency_id", v.travel_agency_id)
+      if(error) console.log("rtnUserTravelAgency 오류 발생 맵함수")
+      return data
+    })
+    setUserTravelAgency(rtnUserTravelAgency);
+    setUserTravelAgencyName(userTravelAgency.map((v)=>v.name))
   })
 
   return (
-    <UserTravelAgencyContext value={{userTravelAgency, userTravelAgencyId, userTravelAgencyName}}>
+    <UserTravelAgencyContext value={{
+      userTravelAgency, 
+      userTravelAgencyId, 
+      userTravelAgencyName,
+      isAgencyExist
+    }}>
       {children}
     </UserTravelAgencyContext>
   );
