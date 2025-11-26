@@ -12,6 +12,7 @@ import ReceiverHome from './pages/RecevierHome';
 import NavigatorBar from './components/NavigatorBar';
 import { AuthContext } from './contexts/AuthContext';
 
+
 export default function App() {
 
   const navigate = useNavigate();
@@ -42,10 +43,6 @@ export default function App() {
 
   return (
     <>
-    {/* 디버깅 */}
-    {/* <ReceiverHome/> */}
-    <WorldMap/>
-
 
     {isLogined ? <NavigatorBar/> : null}
 

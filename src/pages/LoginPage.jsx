@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Login } from "../lib/auth";
@@ -12,7 +11,7 @@ export default function LoginPage() {
     const [loginFail, setLoginFail] = useState(false);
 
     const handleLoginSubmit = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const { data, error } = await Login(email, password);
         if (error) {
@@ -22,7 +21,7 @@ export default function LoginPage() {
             return;
         }
         console.log("로그인 성공", data);
-        navigate("/receiver"); 
+        navigate("/receiver");
     };
 
     return (
@@ -39,7 +38,7 @@ export default function LoginPage() {
                         placeholder='email'
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)}
-                        // className="border w-80 h-10 p-5 rounded-full box-border mb-5 bg-[url('/assets/images/majesticons_mail-line.png')] bg-no-repeat bg-size-[1.2rem_1.2rem] bg-position-[right_1rem_center] pr-10" 
+                        // className="border w-80 h-10 p-5 rounded-full box-border mb-5 bg-[url('/assets/images/majesticons_mail-line.png')] bg-no-repeat bg-size-[1.2rem_1.2rem] bg-position-[right_1rem_center] pr-10"
                         className={
                             "border w-80 h-10 p-5 rounded-full mb-5 pr-10 " +
                             (loginFail
@@ -48,9 +47,9 @@ export default function LoginPage() {
                             )
                         }
                     />
-                    <input 
-                        type="password" 
-                        placeholder='password' 
+                    <input
+                        type="password"
+                        placeholder='password'
                         value={password}
                         onChange={(e)=>setPassword(e.target.value)}
                         // className="border w-80 h-10 p-5 rounded-full box-border mb-15 bg-[url('/assets/images/prime_lock.png')] bg-no-repeat bg-size-[1.2rem_1.2rem] bg-position-[right_1rem_center] pr-10"
@@ -68,8 +67,8 @@ export default function LoginPage() {
                             * 아이디 / 비밀번호를 확인해주세요.
                          </div>
                     </div>)}
-                    <button 
-                        type='submit' 
+                    <button
+                        type='submit'
                         className='w-80 h-10 p-5 rounded-full bg-background text-white flex items-center justify-center shadow-background shadow-xl/15 font
                     '>log in</button>
                 </form>

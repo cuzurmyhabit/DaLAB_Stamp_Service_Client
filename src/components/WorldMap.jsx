@@ -1,7 +1,7 @@
 import {useState, useContext} from "react";
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
-import AuthContext from "../contexts/AuthContext";
+// import AuthContext from "../contexts/AuthContext";
 
 const geoUrl = "https://raw.githubusercontent.com/d3-geom/topojson/master/test/world-countries.json";
 

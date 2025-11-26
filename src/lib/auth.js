@@ -23,7 +23,7 @@ export async function Signup(email, password, name, isUser) {
     password,
   });
 
-  if (error) return { user: null, error };
+  if (error) console.log(error);
 
   const user = data?.user;
   if (!user) {
@@ -32,8 +32,8 @@ export async function Signup(email, password, name, isUser) {
 
   const { error: insertError } = await supabase.from("users").insert([{
     id: user.id,
-    name: name,
-    email: email,
+    user_name: name,
+    user_email: email,
     is_user: isUser,
     }]);
 

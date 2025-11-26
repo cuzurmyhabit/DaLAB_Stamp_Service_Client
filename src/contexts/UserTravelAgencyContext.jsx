@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import supabase from "../lib/supabase"
 
 export const UserTravelAgencyContext = createContext(null);
 
@@ -12,7 +13,7 @@ export default function UserTravelAgencyProvider({children}){
 
   useEffect(()=>{
     async function fetchData(){
-      const {data:userAgency, error:userAgencyError} = await supabase.from('user_agency').select("*").eq("user_id", user.id);
+      const {data:userAgency, error:userAgencyError} = await supabase.from('user_agency').select("*").eq("user_id", user.user_id);
       if(userAgencyError){
         console.error(userAgencyError);
         console.log("ReceiverHome supabase error")
@@ -45,7 +46,7 @@ export default function UserTravelAgencyProvider({children}){
       setUserTravelAgencyName(result.map(v => v?.name));
     }
     if (!user) {
-      return () => {}; 
+      return () => {};
     }
     else{
       fetchData();
@@ -54,8 +55,8 @@ export default function UserTravelAgencyProvider({children}){
 
   return (
     <UserTravelAgencyContext.Provider value={{
-      userTravelAgency, 
-      userTravelAgencyId, 
+      userTravelAgency,
+      userTravelAgencyId,
       userTravelAgencyName,
       isAgencyExist
     }}>

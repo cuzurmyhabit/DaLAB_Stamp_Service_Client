@@ -13,16 +13,16 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setUser(session?.user ?? null);
-        setIsLoading(false); 
+        setIsLoading(false);
       });
       const { data: listener } = supabase.auth.onAuthStateChange(
         (event, session) => {
           setUser(session?.user ?? null);
-          setIsLoading(false); 
+          setIsLoading(false);
         }
       );
-  
-      // 클린업 
+
+      // 클린업
       return () => {
         listener?.subscription.unsubscribe();
       }
@@ -34,7 +34,7 @@ export default function AuthProvider({ children }) {
     };
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{user, isLoading}}>
       {children}
     </AuthContext.Provider>
   );

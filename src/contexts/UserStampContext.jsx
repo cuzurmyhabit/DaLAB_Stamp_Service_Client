@@ -11,17 +11,22 @@ export default function UserStampProvider({children}){
   const [userStamp, setUserStamp] = useState({});
   const [userPriorCountry, setUserPriorCountry] = useState([]);
 
-  useEffect(()=>{ 
+  useEffect(()=>{
     async function fetchData(){
+      if (!user || !user.user_id) {
+        console.log("User data not available, skipping fetch.");
+        return; // 이 지점에서 fetchData 실행을 중단하여 아래 코드에 접근하지 않음
+      }
+
       const { data: userStampData, error: stampError } = await supabase
       .from("user_stamp")
       .select("*")
-      .eq("user_id", user.id);
+      .eq("user_id", user.user_id);
 
       const { data: userPriorCountryData, error: priorError } = await supabase
         .from("user_priority_country")
         .select("*")
-        .eq("user_id", user.id);
+        .eq("user_id", user.user_id);
 
       if (stampError) console.log("user_stamp error", stampError);
       if (priorError) console.log("user_priority_country error", priorError);
@@ -34,13 +39,13 @@ export default function UserStampProvider({children}){
       setUserPriorCountry(priorNames);
     }
     if (!user) {
-      return () => {}; 
+      return () => {};
     }
     else{
       fetchData();
     }
-  },[])
- 
+  },[user])
+
   return(
     <UserStampContext.Provider value={{
       mileage,
