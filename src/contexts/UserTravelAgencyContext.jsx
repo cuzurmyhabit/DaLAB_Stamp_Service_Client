@@ -13,9 +13,8 @@ export default function UserTravelAgencyProvider({children}){
 
   useEffect(()=>{
     async function fetchData(){
-      const {data:userAgency, error:userAgencyError} = await supabase.from('user_agency').select("*").eq("user_id", user.user_id);
+      const {data:userAgency, error:userAgencyError} = await supabase.from('user_agency').select("*").eq("user_id", user.id);
       if(userAgencyError){
-        console.error(userAgencyError);
         console.log("ReceiverHome supabase error")
         setIsAgencyExist(false);
         setUserTravelAgencyId([])
@@ -51,7 +50,7 @@ export default function UserTravelAgencyProvider({children}){
     else{
       fetchData();
     }
-  }, [user])
+  }, [])
 
   return (
     <UserTravelAgencyContext.Provider value={{

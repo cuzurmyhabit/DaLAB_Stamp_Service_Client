@@ -12,16 +12,16 @@ import TravelAgencyProvider from './contexts/TravelAgencyContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <TravelAgencyProvider>
-          <UserTravelAgencyProvider>
-            <UserStampProvider>
+    <AuthProvider>
+      <TravelAgencyProvider>
+        <UserTravelAgencyProvider>
+          <UserStampProvider>
+            <BrowserRouter>
               <App />
-            </UserStampProvider>
-          </UserTravelAgencyProvider>
-        </TravelAgencyProvider>
-      </AuthProvider>
-    </BrowserRouter>
+            </BrowserRouter>
+          </UserStampProvider>
+        </UserTravelAgencyProvider>
+      </TravelAgencyProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

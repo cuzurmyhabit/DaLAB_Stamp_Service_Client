@@ -13,7 +13,7 @@ export default function UserStampProvider({children}){
 
   useEffect(()=>{
     async function fetchData(){
-      if (!user || !user.user_id) {
+      if (!user?.id) {
         console.log("User data not available, skipping fetch.");
         return; // 이 지점에서 fetchData 실행을 중단하여 아래 코드에 접근하지 않음
       }
@@ -21,12 +21,12 @@ export default function UserStampProvider({children}){
       const { data: userStampData, error: stampError } = await supabase
       .from("user_stamp")
       .select("*")
-      .eq("user_id", user.user_id);
+      .eq("user_id", user.id);
 
       const { data: userPriorCountryData, error: priorError } = await supabase
         .from("user_priority_country")
         .select("*")
-        .eq("user_id", user.user_id);
+        .eq("user_id", user.id);
 
       if (stampError) console.log("user_stamp error", stampError);
       if (priorError) console.log("user_priority_country error", priorError);
@@ -38,13 +38,8 @@ export default function UserStampProvider({children}){
       const priorNames = priorCountries.slice().sort((a, b) => a.rank - b.rank).map((v) => v.country_name);
       setUserPriorCountry(priorNames);
     }
-    if (!user) {
-      return () => {};
-    }
-    else{
-      fetchData();
-    }
-  },[user])
+    fetchData();
+  },[])
 
   return(
     <UserStampContext.Provider value={{
