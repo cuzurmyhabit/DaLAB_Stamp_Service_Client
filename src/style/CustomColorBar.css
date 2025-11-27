@@ -1,0 +1,19 @@
+.custom-hue-slider {
+  border-radius: 15px !important;
+}
+
+.custom-hue-slider > div {
+  border-radius: 15px !important;
+  /* 포인터(흰색 막대)가 모서리를 벗어나지 않도록 overflow: hidden을 추가합니다. */
+  overflow: hidden !important;
+}
+
+/* .custom-hue-slider > div > div:last-child {
+  width: 10px !important;
+  height: 30px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #555 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+*/

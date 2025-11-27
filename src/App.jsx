@@ -8,7 +8,8 @@ import MyPageGiver from './pages/MyPageGiver';
 import MyPageReceiver from './pages/MyPageReceiver';
 import StampPage from './pages/StampPage';
 import PassportPage from './pages/PassportPage';
-import ReceiverHome from './pages/RecevierHome';
+import HomeReceiver from './pages/HomeReceiver';
+import HomeGiver from "./pages/HomeGiver";
 import NavigatorBar from './components/NavigatorBar';
 import { AuthContext } from './contexts/AuthContext';
 
@@ -21,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
     if (isLoading) {
-      return; 
+      return;
     }
     if (!user) {
       if (window.location.pathname !== "/login" && window.location.pathname !== "/signup") {
@@ -38,7 +39,7 @@ export default function App() {
         navigate("/giver");
       }
     }
-    
+
   }, [user, isLoading, navigate]);
 
   return (
@@ -50,15 +51,16 @@ export default function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage/>} />
 
-      <Route path="/" element={<ReceiverHome />} />
-      <Route path="/receiver" element={<ReceiverHome />} />
+      <Route path="/" element={<HomeReceiver />} />
+      <Route path="/receiver" element={<HomeReceiver />} />
       <Route path="/stamp" element={<StampPage/>}/>
       <Route path="/passport" element={<PassportPage />} />
       <Route path="/mypage/receiver" element={<MyPageReceiver/>}/>
-      <Route path="/giver" element={<></>}/>
+
+      <Route path="/giver" element={<HomeGiver/>}/>
       <Route path="/mypage/giver" element={<MyPageGiver/>}/>
     </Routes>
-  
+
     </>
   );
 }

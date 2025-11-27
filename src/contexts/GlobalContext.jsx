@@ -1,26 +1,16 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import supabase from "../lib/supabase";
-import { UserTravelAgencyContext } from "./UserTravelAgencyContext";
 
-export const TravelAgencyContext = createContext(null);
+export const GlobalContext = createContext(null);
 
-export default function TravelAgencyProvider({ children }) {
-  const { userTravelAgencyId } = useContext(UserTravelAgencyContext);
+export default function GlobalProvider({ children }) {
 
-  const [travelAgency, setTravelAgency] = useState(null);
   const [continents, setContinents] = useState([]);
   const [countries, setCountries] = useState([]);
-  const [coupons, setCoupons] = useState([]);
 
   useEffect(() => {
-    if (!userTravelAgencyId || userTravelAgencyId.length === 0) {
-      console.log("userTravelAgencyId : 소속 여행사 없음")
-      setTravelAgency(null);
-      return;
-    }
-
     async function fetchData() {
-      const { data: agencyData, error: agencyError } = await supabase
+      const { data: continentsData, error: continentsDataError } = await supabase
         .from("travel_agency")
         .select("*")
         .eq("travel_agency_id", userTravelAgencyId[0])  // 첫 번째 여행사 기준
@@ -53,15 +43,13 @@ export default function TravelAgencyProvider({ children }) {
   }, [userTravelAgencyId]);
 
   return (
-    <TravelAgencyContext.Provider
+    <GlobalContext.Provider
       value={{
-        travelAgency,
         continents,
-        countries,
-        coupons
+        countries
       }}
     >
       {children}
-    </TravelAgencyContext.Provider>
+    </GlobalContext.Provider>
   );
 }

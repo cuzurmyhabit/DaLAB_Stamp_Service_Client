@@ -1,5 +1,6 @@
 import {useState, useContext} from "react";
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import { AuthContext } from "../contexts/AuthContext";
 
 // import AuthContext from "../contexts/AuthContext";
 
@@ -15,10 +16,10 @@ const continentNameToCode = {
 }
 
 export default function WorldMap({
-  highlightedCountries = [], 
-  highlightColor = "#DAEBFF" 
+  highlightedCountries = [],
+  highlightColor = "#DAEBFF"
   }){
-  const {user} = createContext(AuthContext); // 유저의 타입을 검사 리시버, 기버
+  const {user} = useContext(AuthContext); // 유저의 타입을 검사 리시버, 기버
   const highlightedSet = new Set(highlightedCountries);
 
   return (
@@ -26,8 +27,8 @@ export default function WorldMap({
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => {
-            const countryName = geo.properties.name; 
-            
+            const countryName = geo.properties.name;
+
             const isHighlighted = highlightedSet.has(countryName);
 
             return (

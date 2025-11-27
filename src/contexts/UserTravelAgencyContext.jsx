@@ -21,14 +21,16 @@ export default function UserTravelAgencyProvider({children}){
         return;
       }
       const agencies = userAgency ?? [];
-      if(agencies.length <= 0){
+      if(agencies.length === 0){
         setIsAgencyExist(false);
         setUserTravelAgencyId([]);
         return;
       }
       setIsAgencyExist(true);
-      setUserTravelAgencyId(agencies.map(v=>v.travel_agency_id));
+      // 타입 오류 가능성
+      setUserTravelAgencyId(agencies.map((v)=>v.travel_agency_id));
 
+      // 상세정보
       const result = await Promise.all(
         agencies.map(async (v) => {
           const { data, error } = await supabase
@@ -44,13 +46,8 @@ export default function UserTravelAgencyProvider({children}){
       setUserTravelAgency(result);
       setUserTravelAgencyName(result.map(v => v?.name));
     }
-    if (!user) {
-      return () => {};
-    }
-    else{
-      fetchData();
-    }
-  }, [])
+    fetchData()
+  }, [user])
 
   return (
     <UserTravelAgencyContext.Provider value={{

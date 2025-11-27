@@ -13,15 +13,15 @@ import TravelAgencyProvider from './contexts/TravelAgencyContext';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <TravelAgencyProvider>
-        <UserTravelAgencyProvider>
+      <UserTravelAgencyProvider>
+        <TravelAgencyProvider>
           <UserStampProvider>
             <BrowserRouter>
               <App />
             </BrowserRouter>
           </UserStampProvider>
-        </UserTravelAgencyProvider>
-      </TravelAgencyProvider>
+        </TravelAgencyProvider>
+      </UserTravelAgencyProvider>
     </AuthProvider>
   </React.StrictMode>
 );
